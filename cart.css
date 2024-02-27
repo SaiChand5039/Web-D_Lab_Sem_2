@@ -1,0 +1,88 @@
+body{
+    background-image: url(Screenshot\ 2024-02-25\ 233506.png);
+}
+#name{
+    font-size: 80px;
+    font-family: 'Segoe UI';
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+}
+#myaccount{
+    text-align: end;
+    font-family: Verdana;
+    font-size: 15px;
+    color: white;
+}
+#toolbar{
+    background-color: #944E63;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    color: white
+    ;
+    font-weight: 400;
+    height: 20px;
+    border: 8px solid #CAA6A6;
+    border-radius: 50px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+#footer{
+    margin-top: 30px;
+    border-radius: 30px;
+    background-color: #944E63;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    
+}
+#footing{
+    font-size: 20px;
+    font-family: 'Times New Roman';
+    text-align: center;
+    color: #CAA6A6;
+}
+#contac{
+    width: 90px;
+}
+.footed{
+    font-family: 'Times New Roman';
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 40%;
+    margin-left: 20px;
+    color: #561C24;
+    background-color: #CAA6A6;
+    border-radius: 20px;
+}
+#maindivi{
+    display: flex;
+    justify-content: center;
+    gap:100px;
+    flex-wrap: wrap;
+}
+.carting{
+    background-color: #CAA6A6;
+    color: #561C24;
+    font-family: 'Segoe UI';
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;
+    margin: auto;
+    width: 25%;
+}
+#head{
+    color: #561C24;
+    font-size: 40px;
+    font-family: 'Times New Roman';
+}
+button{
+    background-color: #944E63;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}

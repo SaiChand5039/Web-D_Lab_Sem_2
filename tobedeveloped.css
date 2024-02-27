@@ -1,0 +1,38 @@
+#develop{
+    color: white;
+    font-size: 50px;
+    font-family: Georgia;
+    font-weight: 600;
+    text-align: center;
+}
+body{
+    background-image: url(Screenshot\ 2024-02-25\ 233506.png);
+}
+#name{
+    font-size: 80px;
+    font-family: 'Segoe UI';
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-weight: 340;
+}
+#myaccount{
+    text-align: end;
+    font-family: Verdana;
+    font-size: 15px;
+    color: white;
+}
+#toolbar{
+    background-color: #944E63;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    color: white
+    ;
+    font-weight: 400;
+    height: 20px;
+    border: 8px solid #CAA6A6;
+    border-radius: 50px;
+}
+a{
+    text-decoration: none;
+    color: white;
