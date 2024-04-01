@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number comparision</title>
+  <link rel="stylesheet" href="E4.css">
+  <script>
+    function compareNumbers() {
+    var num1 = parseInt(prompt("Enter the first integer:"));
+    var num2 = parseInt(prompt("Enter the second integer:"));
+
+    if (num1 > num2) {
+      document.getElementById("result").innerHTML = "<h1 class='fade-in'>" + num1 + " is greater than " + num2 + "</h1>";
+    } else if (num2 > num1) {
+      document.getElementById("result").innerHTML = "<h1 class='fade-in'>" + num2 + " is greater than " + num1 + "</h1>";
+    } else {
+      document.getElementById("result").innerHTML = "<h1 class='fade-in'>The two numbers are equal</h1>";
+    }
+  }
+  </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Comparison</h1>
+        <button onclick="compareNumbers()">Compare Numbers</button>
+        <div id="result"></div>
+      </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

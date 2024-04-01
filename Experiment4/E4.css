@@ -1,0 +1,20 @@
+body{
+    background-image: linear-gradient(to top left, red, orange, yellow);
+    height: auto;
+    width: auto;
+    text-align: center;
+    display:block;
+}
+.container{
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    height: 500px;
+    width: 1000px;
+    border-radius:10px;
+    background-image: linear-gradient(to top left, blue, skyblue);
+}
+button{
+    cursor: pointer;
+}

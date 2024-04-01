@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Commission Calculator</title>
+<link rel="stylesheet" href="E7.css">
+</head>
+<body>
+<div class="header">
+    <h1>Sales Commission Calculator</h1>
+</div>
+<div class="container">
+    <form id="salesForm">
+        <label for="salesInput" style="color: #fff;">Enter the number of employees:</label>
+        <input type="number" id="numEmployees" min="1" required>
+        <button type="button" onclick="generateInputs()">Submit</button>
+    </form>
+    <div id="salesInputs"></div>
+    <button type="button" onclick="calculateSalaries()">Calculate</button>
+    <div id="result"></div>
+</div>
+<div class="footer">
+    <p>&copy; 2024 Sales Inc. All rights reserved.</p>
+</div>
+
+<script>
+    function generateInputs() {
+        var numEmployees = parseInt(document.getElementById("numEmployees").value);
+        var salesInputs = document.getElementById("salesInputs");
+        salesInputs.innerHTML = "";
+        for (var i = 0; i < numEmployees; i++) {
+            salesInputs.innerHTML += '<label for="sales' + i + '" style="color: #fff;">Sales for Employee ' + (i + 1) + ':</label>';
+            salesInputs.innerHTML += '<input type="number" id="sales' + i + '" min="0" required><br>';
+        }
+    }
+
+    function calculateSalaries() {
+        var numEmployees = parseInt(document.getElementById("numEmployees").value);
+        var sales = [];
+        var salaries = [];
+        for (var i = 0; i < numEmployees; i++) {
+            sales.push(parseFloat(document.getElementById("sales" + i).value));
+        }
+        var numEarnedSalaries = 0;
+        var commissionRate = 0.09;
+        var baseSalary = 200;
+        var result = document.getElementById("result");
+        result.innerHTML = ""; // Clear previous result
+        for (var i = 0; i < sales.length; i++) {
+            var salary = baseSalary + (sales[i] * commissionRate);
+            salaries.push(salary);
+            var salaryDisplay = document.createElement("div");
+            salaryDisplay.classList.add("salary");
+            salaryDisplay.textContent = "Salary for Employee " + (i + 1) + ": $" + salary.toFixed(2);
+            result.appendChild(salaryDisplay);
+            if (salary >= 500) {
+                numEarnedSalaries++;
+            }
+        }
+        result.innerHTML += "Number of salespeople earning at least $500: " + numEarnedSalaries;
+    }
+</script>
+</body>
+</html>
