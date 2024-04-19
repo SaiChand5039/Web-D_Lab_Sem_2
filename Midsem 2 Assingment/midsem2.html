@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/10/abstract-simple-colors-8k_1539371561.jpg.webp);
+    background-size: cover;
+    color: #fff;
+}
+
+#quiz-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background:rgba(0, 0, 0, 0.5) ;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #007bff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: width 1s linear;
+}
+#quizzz{
+    font-size: 80px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    background:rgba(0, 0, 0, 0.5) ;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+#timer{
+    font-family: cursive;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    border-radius: 20px;
+    width: 10%;
+}
+  </style>
+</head>
+<body>
+    <P id="quizzz"> Welcome to Quizzz...</P>
+    <p id="timer"></p>
+  <div id="quiz-container">
+    <button id="start" onclick="displayQuestion()">Start Quiz</button>
+  </div>
+  <script>
+const quizData = [
+    {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        correctAnswer: "Paris"
+    },
+    {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        correctAnswer: "4"
+    },
+    {
+    question: "What is the capital of India?",
+    options: ["Mumbai", "Delhi", "Italy", "Hyderabad"],
+    correctAnswer: "Delhi"
+  },
+  {
+    question: "What is 15/3?",
+    options: ["3", "4", "5", "6"],
+    correctAnswer: "5"
+  },
+  {
+    question: "What is 2*4?",
+    options: ["8", "4", "12", "6"],
+    correctAnswer: "8"
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let timerInterval;
+const totalTime = 15;
+let timeLeft = totalTime;
+
+const quizContainer = document.getElementById('quiz-container');
+
+function displayQuestion() {
+    clearInterval(timerInterval);
+    timeLeft = totalTime;
+
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('progress-bar');
+    progressBar.style.width = '100%';
+    quizContainer.appendChild(progressBar);
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        const progressPercentage = (timeLeft / totalTime) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            checkAnswer(null);
+        }
+        document.getElementById("timer").innerHTML = timeLeft + "s ";
+    }, 1000);
+
+    const questionElement = document.createElement('div');
+    questionElement.classList.add('question');
+    questionElement.textContent = quizData[currentQuestion].question;
+
+    const answersElement = document.createElement('div');
+    answersElement.classList.add('answers');
+
+    quizData[currentQuestion].options.forEach(option => {
+        const answerElement = document.createElement('div');
+        answerElement.classList.add('answer');
+        answerElement.textContent = option;
+        answerElement.addEventListener('click', () => checkAnswer(option));
+        answersElement.appendChild(answerElement);
+    });
+
+    quizContainer.innerHTML = '';
+    quizContainer.appendChild(questionElement);
+    quizContainer.appendChild(answersElement);
+}
+
+function checkAnswer(selectedOption) {
+    clearInterval(timerInterval);
+
+    const correctAnswer = quizData[currentQuestion].correctAnswer;
+    if (selectedOption === correctAnswer) {
+        score++;
+        event.target.style.backgroundColor = '#5cb85c';
+    } else if (selectedOption !== null) {
+        event.target.style.backgroundColor = '#d9534f';
+        document.querySelector(`.answer:nth-child(${quizData[currentQuestion].options.indexOf(correctAnswer) + 1})`).style.backgroundColor = '#5cb85c';
+    }
+
+    if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        setTimeout(displayQuestion, 1000);
+
+    } else {
+        setTimeout(() => {
+        quizContainer.innerHTML = `<h2>Your Score: ${score}/${quizData.length}</h2><br>`;
+        }, 1000);
+        if(score==0){
+                quizContainer.innerHTML = `<h2>Better luck next time!</h2>`;
+            }
+        if(score==1)
+            {
+                quizContainer.innerHTML = `<h2>Could have perfromed better...</h2>`;
+            }
+        if(score==2)
+            {
+                quizContainer.innerHTML = `<h2>Could have perfromed better...</h2>`;
+            }
+        if(score==3)
+            {
+                quizContainer.innerHTML = `<h2>Good! Keep up the spirits!</h2>`;
+            }
+        if(score==4)
+            {
+                quizContainer.innerHTML = `<h2>Nice Score! Wish you all the best for next times...</h2>`;
+            }
+        if(score==5)
+            {
+                quizContainer.innerHTML = `<h2>Excellent! Keep rocking</h2>`;
+            }
+    }
+}
+  </script>
+</body>
+</html>
